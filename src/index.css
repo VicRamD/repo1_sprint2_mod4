@@ -1,2 +1,15 @@
 @import "tailwindcss";
 @import 'bootstrap-icons/font/bootstrap-icons.css';
+
+.relative-container:hover {
+    background-color: orange;
+}
+
+.relative-container:hover img {
+    opacity: 0.2;
+}
+
+.relative-container:hover h2 {
+    background-color: transparent;
+    top: 50%;
+}
