@@ -7,4 +7,5 @@ export const songsList = [
     {id: 5, title: "The crossing", alt:"The crossing cover", cover: "/src/assets/songsImg/the-crossing-cover.jpg"},
     {id: 6, title: "The final countdown", alt:"The final countdown cover", cover: "/src/assets/songsImg/the-final-countdown-cover.jpg"},
     {id: 7, title: "The wheekend whip", alt:"The wheekend whip cover", cover: "/src/assets/songsImg/the-weekend-whip-cover.png"},
+    {id: 8, title: "Let it be", alt:"Let it be cover", cover: "/src/assets/songsImg/let-it-be-cover.jpg"}
 ]
