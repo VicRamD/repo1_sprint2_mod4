@@ -13,3 +13,7 @@
     background-color: transparent;
     top: 50%;
 }
+
+.playlistCardSection > div:first-child {
+    background-color: oklch(87.9% 0.169 91.605);
+}
