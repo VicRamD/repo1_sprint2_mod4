@@ -1,7 +1,14 @@
-const PlaylistModal = ({onClose}) => {
+const PlaylistModal = ({onClose, setPlaylist}) => {
   
   const savedPlaylist = localStorage.getItem('playlist');
   const playlistParsed = JSON.parse(savedPlaylist);
+
+  //quitar de playlist
+  const removeFromPlaylist = (id) => {
+    const updatedList = playlistParsed.filter(song => song.id !== id);
+    setPlaylist(updatedList);
+    localStorage.setItem("playlist", JSON.stringify(updatedList));
+  };
 
   return (
     <div id="playlistModal" className="fixed inset-0 bg-gray-400/40 flex justify-center items-center z-50">
@@ -35,10 +42,10 @@ const PlaylistModal = ({onClose}) => {
               <h3 className="text-text-primary text-lg font-bold">{song.title}</h3>
             </div>
             {/*Remove Button */}
-            <button
-              className="bg-state-error border-2 border-red-600 hover:bg-red-600 hover:text-white active:bg-red-700 
-                      py-2 px-4 rounded-md font-semibold transition-colors duration-300">
-              <i className="ph ph-trash"></i> Remove
+            <button onClick={() => removeFromPlaylist(song.id)}
+              className="bg-state-error border-2 bg-red-600 text-white hover:bg-white hover:text-red-600 border-red-600 active:bg-red-700 
+                      py-2 px-3 rounded-full font-bold transition-colors duration-300">
+              <i className="bi bi-x text-xl"></i>
             </button>
           </div>)
           
