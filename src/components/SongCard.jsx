@@ -10,9 +10,9 @@ const SongCard = ({song, onAdd}) => {
                 </h2>
             </div>
 
-            <div className="p-4">
+            <div>
                 <button className="bg-button-primary hover:bg-amber-400 active:bg-red-600 text-dark-secondary py-2 px-4 
-                rounded-md w-full font-semibold transition-colors duration-300" onClick={() => onAdd(song)}>
+                w-full font-semibold transition-colors duration-300 cursor-pointer" onClick={() => onAdd(song)}>
                     <i className="bi bi-play text-red-500"></i> Add to playlist
                 </button>
             </div>

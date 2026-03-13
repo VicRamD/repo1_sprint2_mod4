@@ -22,9 +22,15 @@ const Main = ({isModalOpen, setIsModalOpen}) => {
   //añadir a playlist
   const addToPlaylist = (song) => {
     //console.log(song)
-    setPlaylist([...playlist, song]);
+    const songAlreadyInPlaylist = playlist.find( track => track.id === song.id);
+    if(!songAlreadyInPlaylist){
+      setPlaylist([...playlist, song]);
+      localStorage.setItem("playlist", JSON.stringify([...playlist, song]));
+    } else {
+      console.log("Song already in playlist");  
+    }
     //console.log(playlist);
-    localStorage.setItem("playlist", JSON.stringify([...playlist, song]));
+    
   };
 
   //guardar en local storage

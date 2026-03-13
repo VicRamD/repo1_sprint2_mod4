@@ -9,7 +9,7 @@ const Header = ({ setIsModalOpen }) => {
               <img src={logo} alt="logo libroteca" style={{width: '100px', height: '50px'}}/>
           </a>
           <div>
-              <button className='border-4 p-2 border-white text-white bg-amber-500 cursor-pointer 
+              <button className='border-4 py-2 px-3 border-white text-white bg-amber-500 cursor-pointer rounded-3xl
               hover:text-amber-500 hover:bg-white' onClick={() => setIsModalOpen(true)}>View Playlist</button>
           </div>
       </nav>
