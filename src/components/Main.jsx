@@ -5,15 +5,19 @@ import SongList from './SongList';
 
 const Main = ({isModalOpen, setIsModalOpen}) => {
 
-  /* Si ya existe registro en local storage lo recupera para incializar el estado */
-  const savedPlaylist = localStorage.getItem('playlist');
+  //estado de la playlist
+  const [playlist, setPlaylist] = useState([]);
+
+  //recuperar lista del local storage (si existe) con useEffect
+  useEffect(()=>{
+    const savedPlaylist = localStorage.getItem('playlist');
     let playlistParsed = [];
     if(savedPlaylist){
-      playlistParsed = JSON.parse(savedPlaylist);
+          playlistParsed = JSON.parse(savedPlaylist);
     }
-
-  //estado de la playlist
-  const [playlist, setPlaylist] = useState(playlistParsed);
+    setPlaylist(playlistParsed);
+  }, []);
+  
 
   //añadir a playlist
   const addToPlaylist = (song) => {
@@ -22,13 +26,6 @@ const Main = ({isModalOpen, setIsModalOpen}) => {
     //console.log(playlist);
     localStorage.setItem("playlist", JSON.stringify([...playlist, song]));
   };
-
-  //quitar de playlist
-  /*const removeFromPlaylist = (id) => {
-    const updatedList = playlist.filter(song => song.id !== id);
-    setPlaylist(updatedList);
-    localStorage.setItem("playlist", JSON.stringify(updatedList));
-  }; */
 
   //guardar en local storage
   /*useEffect(() => {
