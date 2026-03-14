@@ -1,5 +1,8 @@
 import { motion } from "motion/react";
 
+import SoundFlowGraph from "./animated/SoundFlowGraph";
+import { div } from "motion/react-client";
+
 const PlaylistModal = ({onClose, setPlaylist}) => {
   
   const savedPlaylist = localStorage.getItem('playlist');
@@ -46,12 +49,25 @@ const PlaylistModal = ({onClose, setPlaylist}) => {
             <div className="flex-1">
               <h3 className="text-text-primary text-lg font-bold">{song.title}</h3>
             </div>
-            {/*Remove Button */}
+
+            {index === 0 ? <div className="lg:grid lg:grid-cols-2 gap-x-3">
+              <SoundFlowGraph/> 
+              <button onClick={() => removeFromPlaylist(song.id)}
+                className="bg-state-error border-2 bg-red-600 text-white hover:bg-white hover:text-red-600 border-red-600 active:bg-red-700 
+                        py-2 px-3 rounded-full font-bold transition-colors duration-300 cursor-pointer">
+                <i className="bi bi-x text-xl"></i>
+              </button>
+            </div>
+
+            : 
+            
             <button onClick={() => removeFromPlaylist(song.id)}
               className="bg-state-error border-2 bg-red-600 text-white hover:bg-white hover:text-red-600 border-red-600 active:bg-red-700 
                       py-2 px-3 rounded-full font-bold transition-colors duration-300 cursor-pointer">
               <i className="bi bi-x text-xl"></i>
-            </button>
+            </button>}
+            {/*Remove Button */}
+            
           </div>) 
           
           }
