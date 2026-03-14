@@ -17,3 +17,10 @@
 .playlistCardSection > div:first-child {
     background-color: oklch(87.9% 0.169 91.605);
 }
+
+.playing::before {
+    content: "Reproduciendo";
+    color: red;
+    position: absolute;
+    top: -5px;
+}

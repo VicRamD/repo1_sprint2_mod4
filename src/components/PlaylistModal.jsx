@@ -34,7 +34,8 @@ const PlaylistModal = ({onClose, setPlaylist}) => {
           {savedPlaylist && playlistParsed.length === 0 ? <p className="text-center">
             You don't have any songs in your playlist yet.
           </p> : 
-          playlistParsed.map(song => <div key={song.id} className="flex items-center overflow-hidden p-4 space-x-4 border-b-2 border-amber-600 mt-0"> 
+          playlistParsed.map((song, index) => <div key={song.id} className={`${index === 0 ? "playing relative" : ""} flex items-center p-4 space-x-4 border-b-2 border-amber-600 mt-0`}> 
+            {index === 0 ? <i className="bi bi-disc absolute -left-3 text-4xl text-black"></i> : ""}
             {/* Image */}
             <img src={song.cover} alt={song.alt} className="w-20 h-20 object-cover rounded-md" />
             {/* Song Infor */}
