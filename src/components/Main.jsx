@@ -22,6 +22,7 @@ const Main = ({isModalOpen, setIsModalOpen}) => {
   //añadir a playlist
   const addToPlaylist = (song) => {
     //console.log(song)
+    //Revisa si la canción ya está en la playlist para no agregarla
     const songAlreadyInPlaylist = playlist.find( track => track.id === song.id);
     if(!songAlreadyInPlaylist){
       setPlaylist([...playlist, song]);

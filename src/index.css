@@ -21,6 +21,7 @@
 .playing::before {
     content: "Reproduciendo";
     color: red;
+    font-weight: bold;
     position: absolute;
     top: -5px;
 }

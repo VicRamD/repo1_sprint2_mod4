@@ -11,7 +11,7 @@ const SoundFlowGraph = () => {
     const [currentNumber, setCurrentNumber] = useState(0);
 
     function useSetTimeoutToChangeOrder(order){
-        const timeout = setTimeout(() => setOrder(order), 800)
+        const timeout = setTimeout(() => setOrder(order), 1200)
         return () => clearTimeout(timeout);
     }
 

@@ -7,5 +7,8 @@ export const songsList = [
     {id: 5, title: "The crossing", alt:"The crossing cover", cover: "/src/assets/songsImg/the-crossing-cover.jpg"},
     {id: 6, title: "The final countdown", alt:"The final countdown cover", cover: "/src/assets/songsImg/the-final-countdown-cover.jpg"},
     {id: 7, title: "The wheekend whip", alt:"The wheekend whip cover", cover: "/src/assets/songsImg/the-weekend-whip-cover.png"},
-    {id: 8, title: "Let it be", alt:"Let it be cover", cover: "/src/assets/songsImg/let-it-be-cover.jpg"}
+    {id: 8, title: "Let it be", alt:"Let it be cover", cover: "/src/assets/songsImg/let-it-be-cover.jpg"},
+    {id: 9, title: "Don't stop me now", alt:"Don't stop me now cover", cover: "/src/assets/songsImg/dont-stop-me-now-cover.jpg"},
+    {id: 10, title: "Who am I?", alt:"Who am I cover", cover: "/src/assets/songsImg/who-am-I-cover.jpg"},
+    {id: 11, title: "Wind of change", alt:"Wind of change cover", cover: "/src/assets/songsImg/wind-of-change-cover.jpg"}
 ]
