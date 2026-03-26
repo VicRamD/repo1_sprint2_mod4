@@ -25,3 +25,27 @@
     position: absolute;
     top: -5px;
 }
+
+@custom-variant elegance {
+  &:where([data-theme="elegance"], [data-theme="elegance"] *) {
+    @slot;
+  }
+}
+
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+}
+
+
+@theme {
+
+    /* Neutral elegance */
+    --color-elegance-100: oklch(0.9136 0.03 63.64);
+    --color-elegance-200: oklch(0.9136 0.0583 63.64);
+    --color-elegance-300: oklch(0.8095 0.024 65.39);
+    --color-elegance-400: oklch(0.6124 0.0472 62.19);
+    --color-elegance-500: oklch(0.4307 0.0548 61.35);
+    --color-elegance-600: oklch(0.36 0.0548 61.35);
+} 

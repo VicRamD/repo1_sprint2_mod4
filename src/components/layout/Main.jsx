@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-import PlaylistModal from './PlaylistModal'
-import SongList from './SongList';
+import PlaylistModal from '../PlaylistModal'
+import SongList from '../SongList';
 
 const Main = ({isModalOpen, setIsModalOpen}) => {
 
