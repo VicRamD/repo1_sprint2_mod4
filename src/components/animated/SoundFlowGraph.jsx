@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 
 const SoundFlowGraph = () => {
 
+    //colores de fondo de las 3 filas y 3 columnas
     const order1 = [["bg-transparent","bg-teal-900","bg-transparent"], ["bg-teal-900","bg-teal-900","bg-teal-900"], ["bg-teal-900","bg-teal-900","bg-teal-900"]];
     const order2 = [["bg-teal-900","bg-transparent","bg-teal-900"], ["bg-teal-900","bg-transparent","bg-teal-900"], ["bg-teal-900","bg-teal-900","bg-teal-900"]];
     const order3 = [["bg-transparent","bg-teal-900","bg-transparent"], ["bg-transparent","bg-teal-900","bg-transparent"], ["bg-teal-900","bg-teal-900","bg-teal-900"]];
@@ -15,6 +16,7 @@ const SoundFlowGraph = () => {
         return () => clearTimeout(timeout);
     }
 
+    /**Dependiendo del número actual se cambia al siguiente orden de lps elementos */
     useEffect(() => {
         switch(currentNumber){
             case 0:
