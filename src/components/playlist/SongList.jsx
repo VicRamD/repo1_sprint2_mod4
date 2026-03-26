@@ -1,4 +1,4 @@
-import { songsList } from "../constants/songsList";
+import { songsList } from "../../constants/songsList";
 import SongCard from "./SongCard";
 
 const SongList = ({ onAdd }) => {

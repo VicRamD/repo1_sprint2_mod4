@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 
-import SoundFlowGraph from "./animated/SoundFlowGraph";
-import { div } from "motion/react-client";
+import SoundFlowGraph from "../animated/SoundFlowGraph";
+//import { div } from "motion/react-client";
 
 const PlaylistModal = ({onClose, setPlaylist}) => {
   

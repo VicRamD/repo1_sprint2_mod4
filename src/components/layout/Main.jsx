@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import PlaylistModal from '../PlaylistModal'
-import SongList from '../SongList';
+import PlaylistModal from '../playlist/PlaylistModal'
+import SongList from '../playlist/SongList';
+
+import Cart from '../cart/Cart';
 
 const Main = ({isModalOpen, setIsModalOpen}) => {
 
@@ -46,6 +48,7 @@ const Main = ({isModalOpen, setIsModalOpen}) => {
         {isModalOpen && <PlaylistModal onClose={() => setIsModalOpen(false)} setPlaylist={setPlaylist}/>}
         {/*isModalOpen && <PlaylistModal playlist={playlist} onClose={() => setIsModalOpen(false)} />*/}
         <SongList onAdd={addToPlaylist}/>
+        <Cart/>
     </main>
   )
 }
