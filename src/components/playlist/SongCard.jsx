@@ -1,4 +1,8 @@
-const SongCard = ({song, onAdd}) => {
+import { usePlaylistContext } from '../../contexts/PlaylistContext';
+
+const SongCard = ({song}) => {
+
+    const {addToPlaylist} = usePlaylistContext();
 
     return (
         <div className="bg-dark-secondary rounded-lg shadow-lg overflow-hidden max-w-80">
@@ -12,7 +16,7 @@ const SongCard = ({song, onAdd}) => {
 
             <div>
                 <button className="bg-button-primary hover:bg-amber-400 active:bg-red-600 text-dark-secondary py-2 px-4 
-                w-full font-semibold transition-colors duration-300 cursor-pointer" onClick={() => onAdd(song)}>
+                w-full font-semibold transition-colors duration-300 cursor-pointer" onClick={() => addToPlaylist(song)}>
                     <i className="bi bi-play text-red-500"></i> Add to playlist
                 </button>
             </div>

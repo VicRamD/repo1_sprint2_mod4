@@ -2,12 +2,18 @@ import logo from '../../assets/logoSoundZone.png'
 import { useCartContext } from "../../contexts/CartContext";
 import { useThemeContext } from "../../contexts/ThemeContext"
 import { useOpener } from "../../hooks/useOpener";
+import { usePlaylistContext } from '../../contexts/PlaylistContext';
 
-
-const Header = ({ setIsModalOpen }) => {
+const Header = () => {
+  //cart
   const {toggle} = useCartContext();
+
+  //theme
   const {changeTheme, themes} = useThemeContext();
   const {toggle: switcher, close, isOpen} = useOpener();
+
+  //playlist
+  const {open} = usePlaylistContext();
 
   function closeTabAndChangeTheme(themeName){
       changeTheme(themeName);
@@ -53,7 +59,7 @@ const Header = ({ setIsModalOpen }) => {
 
             <div>
                 <button className='border-4 py-2 px-3 border-white text-white bg-amber-500 cursor-pointer rounded-3xl
-                hover:text-amber-500 hover:bg-white' onClick={() => setIsModalOpen(true)}><span className='hidden lg:inline'>View</span> Playlist</button>
+                hover:text-amber-500 hover:bg-white' onClick={() => open()}><span className='hidden lg:inline'>View</span> Playlist</button>
             </div>
           </div>
           

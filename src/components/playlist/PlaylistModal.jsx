@@ -1,26 +1,18 @@
 import { motion } from "motion/react";
 
 import SoundFlowGraph from "../animated/SoundFlowGraph";
-//import { div } from "motion/react-client";
+import { usePlaylistContext } from '../../contexts/PlaylistContext';
 
-const PlaylistModal = ({onClose, setPlaylist}) => {
-  
-  const savedPlaylist = localStorage.getItem('playlist');
-  const playlistParsed = JSON.parse(savedPlaylist);
+const PlaylistModal = () => {
 
-  //quitar de playlist
-  const removeFromPlaylist = (id) => {
-    const updatedList = playlistParsed.filter(song => song.id !== id);
-    setPlaylist(updatedList);
-    localStorage.setItem("playlist", JSON.stringify(updatedList));
-  };
+  const {close, playlist, removeFromPlaylist} = usePlaylistContext();
 
   return (
     <div id="playlistModal" className="fixed inset-0 bg-gray-400/40 flex justify-center items-center z-50">
       <div className="bg-white rounded-lg p-6 border-4 border-amber-500 shadow-md relative w-full max-w-3xl max-h-[80vh] overflow-hidden">
         {/* Button close */}
         <button id="closeModal" className="absolute top-2 right-4 text-text-secondary hover:text-red-500 text-2xl cursor-pointer"
-        onClick={onClose}>
+        onClick={() => close()}>
           &times;
         </button>
 
@@ -36,10 +28,10 @@ const PlaylistModal = ({onClose, setPlaylist}) => {
         <div className="playlistCardSection bg-white py-10 overflow-y-auto max-h-[65vh] px-4">
 
           {/* Card Component */}
-          {savedPlaylist && playlistParsed.length === 0 ? <p className="text-center">
+          {playlist.length === 0 ? <p className="text-center">
             You don't have any songs in your playlist yet.
           </p> : 
-          playlistParsed.map((song, index) => <div key={song.id} className={`${index === 0 ? "playing relative" : ""} flex items-center p-4 space-x-4 border-b-2 border-amber-600 mt-0`}> 
+          playlist.map((song, index) => <div key={song.id} className={`${index === 0 ? "playing relative" : ""} flex items-center p-4 space-x-4 border-b-2 border-amber-600 mt-0`}> 
             {index === 0 ? <motion.i className="bi bi-disc absolute -left-3 text-4xl text-black" 
             animate={{ rotate: 720 }} transition={{ duration: 2, repeat: Infinity }} ></motion.i> : <></>}
 
