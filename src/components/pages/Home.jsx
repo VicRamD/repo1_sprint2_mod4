@@ -9,7 +9,7 @@ const Home = () => {
         </div>
         <h1 className='text-center font-bold text-4xl'>Escucha tus canciones favoritas</h1>
         <div className='flex justify-center'>
-            <Link to="/favorite" className='bg-amber-400 px-4 py-2'>Ingresar</Link>
+            <Link to="/items" className='bg-amber-400 px-4 py-2'>Ingresar</Link>
         </div>
     </main>
   )
