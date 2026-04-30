@@ -4,6 +4,7 @@ import Footer from './components/layout/Footer'
 
 import AppRouter from './components/AppRouter';
 import { ArtistProvider } from './contexts/ArtistContext';
+import { GenreProvider } from './contexts/GenreContext';
 
 function App() {
 
@@ -12,7 +13,9 @@ function App() {
       <div className="h-screen flex flex-col">
         <Header/>
         <ArtistProvider>
-          <AppRouter/>
+          <GenreProvider>
+              <AppRouter/>
+          </GenreProvider>
         </ArtistProvider>
         <Footer/>
       </div>
