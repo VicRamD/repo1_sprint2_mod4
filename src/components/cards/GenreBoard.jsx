@@ -9,7 +9,10 @@ const GenreBoard = () => {
     <div>
         <h2 className='text-2xl'>Genero</h2>
         <Link to="/añadir" className='inline-block bg-emerald-500 border-2 border-solid border-black p-2 m-2'>Añadir un genero</Link>
-        {genres.map(genre => <GenreCard genre={genre}/>)}
+        <div className='px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+            {genres.map(genre => <GenreCard genre={genre}/>)}
+        </div>
+        
     </div>
   )
 }
