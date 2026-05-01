@@ -34,8 +34,15 @@ export const ArtistProvider = ({ children }) => {
         fetchArtists();
     }, []);
 
+    //Put
+    const updateArtist = async (id, updatedData) => {
+        const enpoint = `https://sound-zone-api-sp5.onrender.com/api/artists/${id}/editar`;
+        const {data} = await axios.put(enpoint, updatedData);
+        setArtists((prev)=>prev.map(artist => artist.id === id ? data : artist));
+    }
+
     return(
-        <ArtistContext.Provider value={{artists, loading, createArtist}}>
+        <ArtistContext.Provider value={{artists, loading, createArtist, updateArtist}}>
             { children }
         </ArtistContext.Provider>
     );
