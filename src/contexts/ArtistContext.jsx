@@ -26,11 +26,6 @@ export const ArtistProvider = ({ children }) => {
     //Post
     const createArtist = async (artist) => {
         const {data} = await axios.post("https://sound-zone-api-sp5.onrender.com/api/artists/agregar", artist,
-            {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            }
         );
         setArtists((prev)=>[...prev, data]);
     }

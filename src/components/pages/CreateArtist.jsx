@@ -50,6 +50,8 @@ const CreateArtist = () => {
     }
 
     try {
+      setLoading(true);
+
       const formData = new FormData();
       formData.append("name", form.name);
       formData.append("country", form.country);
@@ -62,14 +64,21 @@ const CreateArtist = () => {
       }
 
       await createArtist(formData);   
-
-      setLoading(true);
-      await createArtist()
       navigate("/items/artists");
     } catch (error) {
-      console.error("Error al guardar el artista:", error);
+      //console.error("Error al guardar el artista:", error);
+      if (error.response) {
+        console.log("Data:", error.response.data);
+        console.log("Status:", error.response.status);
+        console.log("Headers:", error.response.headers);
+      } else if (error.request) {
+        console.log("No llegó respuesta:", error.request);
+      } else {
+        console.log("Error:", error.message);
+      }
     } finally {
       setLoading(false);
+      navigate("/items/artists");
     }
   };
 
@@ -85,7 +94,7 @@ const CreateArtist = () => {
         {/* Header */}
         <div className="bg-amber-300 px-6 py-5 flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-white/30 flex items-center justify-center border-2">
-            <i class="bi bi-apple-music text-red-500"></i>
+            <i className="bi bi-apple-music text-red-500"></i>
           </div>
           <div>
             <h2 className="text-white font-semibold text-lg leading-tight">Añadir artista</h2>
@@ -136,7 +145,7 @@ const CreateArtist = () => {
           {/* Imagen */}
           <div className="flex flex-col gap-1">
             <label className="text-xs font-medium text-black uppercase tracking-wide">Imagen</label>
-            <label for="image" className="border-2 border-solid border-black py-2 px-4 cursor-pointer inline-block
+            <label htmlFor="image" className="border-2 border-solid border-black py-2 px-4 cursor-pointer inline-block
             bg-amber-100 rounded-xl">Escoge un archivo</label>
             <input type="file" name="image" id="image" onChange={handleImageChange}/>
           </div>
