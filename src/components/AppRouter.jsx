@@ -6,6 +6,7 @@ import Main from './layout/Main';
 import GenreBoard from './cards/GenreBoard';
 import ArtistBoard from './cards/ArtistBoard';
 import DashboardSelector from './pages/DashboardSelector';
+import CreateArtist from './pages/CreateArtist';
 
 const AppRouter = () => {
   return (
@@ -13,7 +14,12 @@ const AppRouter = () => {
           <Route path="/" element={<Home/>}/>
           <Route path="/items" element={<Dashboard/>}>
               <Route path="genres" element={<GenreBoard/>} />
-              <Route path="artists" element={<ArtistBoard/>} /> 
+              <Route path="artists" element={<ArtistBoard/>}>
+                  <Route path='create' element={<CreateArtist/>}/>
+                  {/*
+                  <Route path=':id'/>
+                  <Route path=':id/edit'/> */}
+              </Route>
           </Route>
           <Route path="/favorite" element={<Main/>}/>
           <Route path="/*" element={<div>Ruta no encontrada - 404 NOT FOUND</div>}/>

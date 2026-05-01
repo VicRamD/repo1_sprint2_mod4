@@ -9,6 +9,7 @@ export const ArtistProvider = ({ children }) => {
     const [artists, setArtists] = useState();
     const [loading, setLoading] = useState(false);
 
+    //Get
     const fetchArtists = async () => {
         setLoading(true);
         try {
@@ -22,12 +23,24 @@ export const ArtistProvider = ({ children }) => {
         }
     }
 
+    //Post
+    const createArtist = async (artist) => {
+        const {data} = await axios.post("https://sound-zone-api-sp5.onrender.com/api/artists/agregar", artist,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            }
+        );
+        setArtists((prev)=>[...prev, data]);
+    }
+
     useEffect(()=>{
         fetchArtists();
     }, []);
 
     return(
-        <ArtistContext.Provider value={{artists, loading}}>
+        <ArtistContext.Provider value={{artists, loading, createArtist}}>
             { children }
         </ArtistContext.Provider>
     );
