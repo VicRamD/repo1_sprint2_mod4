@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
-
-import axios from "axios";
 import DashboardSelector from './DashboardSelector';
 
 const Dashboard = () => {
 
   return (
-    <DashboardSelector/>
+    <div className='flex flex-col px-2'>
+      <h1 className='text-4xl font-semibold px-4 py-2'>Darshboard</h1>
+      <DashboardSelector/>
+    </div>
+    
   )
 }
 
