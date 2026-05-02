@@ -42,26 +42,28 @@ const Header = () => {
 
   return (
     <header>
-      {/* ─────────────────────────────────────────
-          NAVBAR
-      ───────────────────────────────────────── */}
+      {/*NAVBAR*/}
       <nav className="flex items-center justify-between w-full h-[5em] bg-amber-300 mx-auto z-30 py-5 px-6 lg:px-20 2xl:px-0">
         {/* Logo */}
         <a href="/" onClick={closeMenu}>
-          <img src={logo} alt="logo libroteca" style={{ width: "100px", height: "50px" }} />
+          <img src={logo} alt="logo sound zone" style={{ width: "100px", height: "50px" }} />
         </a>
 
         {/* ── Acciones escritorio (lg+) ── */}
         <div className="hidden lg:flex gap-1">
           <div className="flex gap-4">
+            
+            {/**Navegación general */}
+            <div className="border-b-2 border-t-2 border-amber-200 flex flex-row items-center gap-4 px-3">
+              <a href="/items" className="inline-block py-2 px-4 text-white hover:bg-white hover:text-amber-600">Dashboard</a>
+              <a href="/favorite" className="inline-block py-2 px-4 text-white hover:bg-white hover:text-amber-600">Tus canciones</a>
+            </div>
+
             {/* Dropdown Theme */}
             <div className="relative h-fit w-fit">
-              <button
-                className="relative text-white cursor-pointer p-2 rounded-md hover:bg-white hover:text-black"
-                onClick={switcher}
-              >
-                Theme
-              </button>
+              <button className="relative text-white cursor-pointer p-2 rounded-md hover:bg-white hover:text-black"
+                onClick={switcher}> Theme </button>
+
               <span className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left rounded-full bg-indigo-300 transition-transform duration-300 ease-out" />
 
               <div className={`absolute left-1/2 top-12 bg-white text-black -translate-x-1/2 ${isOpen ? "" : "hidden"}`}>
@@ -127,36 +129,32 @@ const Header = () => {
             aria-expanded={menuOpen}
             className="border-4 border-white bg-amber-500 hover:bg-white
               transition-colors duration-200 rounded-full w-11 h-11
-              flex flex-col justify-center items-center gap-[5px] group focus:outline-none"
+              flex flex-col justify-center items-center gap-1.25 group focus:outline-none"
           >
             <span
-              className={`block h-[2px] rounded-full transition-all duration-300 origin-center bg-white group-hover:bg-amber-500
-                ${menuOpen ? "w-5 rotate-45 translate-y-[7px]" : "w-5"}`}
+              className={`block h-0.5 rounded-full transition-all duration-300 origin-center bg-white group-hover:bg-amber-500
+                ${menuOpen ? "w-5 rotate-45 -translate-y-1.75" : "w-5"}`}
             />
             <span
-              className={`block h-[2px] rounded-full transition-all duration-300 bg-white group-hover:bg-amber-500
+              className={`block h-0.5 rounded-full transition-all duration-300 bg-white group-hover:bg-amber-500
                 ${menuOpen ? "w-0 opacity-0" : "w-3 group-hover:w-5"}`}
             />
             <span
-              className={`block h-[2px] rounded-full transition-all duration-300 origin-center bg-white group-hover:bg-amber-500
-                ${menuOpen ? "w-5 -rotate-45 -translate-y-[7px]" : "w-5"}`}
+              className={`block h-0.5 rounded-full transition-all duration-300 origin-center bg-white group-hover:bg-amber-500
+                ${menuOpen ? "w-5 -rotate-45 -translate-y-1.75" : "w-5"}`}
             />
           </button>
         </div>
       </nav>
 
-      {/* ─────────────────────────────────────────
-          OVERLAY
-      ───────────────────────────────────────── */}
+      {/* OVERLAY*/}
       <div
         onClick={closeMenu}
         className={`fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-300
           ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       />
 
-      {/* ─────────────────────────────────────────
-          PANEL LATERAL MÓVIL
-      ───────────────────────────────────────── */}
+      {/* PANEL LATERAL MÓVIL */}
       <aside
         className={`fixed top-0 right-0 h-full w-72 z-50 bg-amber-300 border-l-4 border-white
           flex flex-col gap-6 px-7 pt-24 pb-10
@@ -198,6 +196,14 @@ const Header = () => {
           >
             View Playlist
           </button>
+        </div>
+
+        {/**Navegación general */}
+        <div className="border-r-2 border-l-2 border-amber-200 flex flex-col items-center gap-4 px-3">
+          <a href="/items" className="inline-block py-2 px-4 border-white border-2 
+          bg-amber-500 w-full text-white hover:bg-white hover:text-amber-600 rounded-md">Dashboard</a>
+          <a href="/favorite" className="inline-block py-2 px-4 border-white border-2
+          bg-amber-500 w-full text-white hover:bg-white hover:text-amber-600 rounded-md">Tus canciones</a>
         </div>
 
         {/* Footer */}
