@@ -10,7 +10,7 @@ import CreateArtist from './pages/CreateArtist';
 import ArtistsList from './pages/ArtistsList';
 import ArtistDetail from './cards/ArtistDetail';
 import ArtistEdit from './pages/ArtistEdit';
-
+import NotFound from './pages/NotFound';
 
 const AppRouter = () => {
   return (
@@ -27,7 +27,7 @@ const AppRouter = () => {
               </Route>
           </Route>
           <Route path="/favorite" element={<Main/>}/>
-          <Route path="/*" element={<div>Ruta no encontrada - 404 NOT FOUND</div>}/>
+          <Route path="/*" element={<NotFound/>}/>
     </Routes>
   )
 }
