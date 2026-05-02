@@ -57,10 +57,10 @@ const CreateArtist = () => {
       formData.append("country", form.country);
       formData.append("formedYear", form.formedYear);
       formData.append("biography", form.biography);
-      formData.append("isActive", form.isActive); // si lo agregas en el estado
+      formData.append("isActive", form.isActive); 
 
       if (form.image) {
-        formData.append("image", form.image); // archivo real
+        formData.append("image", form.image);
       }
 
       await createArtist(formData);   
@@ -78,7 +78,6 @@ const CreateArtist = () => {
       }
     } finally {
       setLoading(false);
-      navigate("/items/artists");
     }
   };
 

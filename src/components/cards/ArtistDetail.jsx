@@ -1,16 +1,23 @@
+import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom"
 import { useArtistContext } from "../../contexts/ArtistContext";
+
 
 const ArtistDetail = () => {
 
     const { id } = useParams();
-    const {artists} = useArtistContext();
+    const { getArtistById } = useArtistContext();
+    const [artist, setArtist] = useState(null);
 
-    if(!artists) return <p>Cargando...</p>
+    useEffect(() => {
+        const load = async () => {
+        const data = await getArtistById(id);
+        setArtist(data);
+        };
+        load();
+    }, [id]);
 
-    const artist = artists.find(a => a.id === id);
-    
-    if(!artist) return <p>Perfil no encontrado</p>
+  if (!artist) return <p>Cargando...</p>;
 
   return (
     <div className='max-w-75 border-2 border-black border-solid p-2'>

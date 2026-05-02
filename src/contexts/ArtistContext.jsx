@@ -23,6 +23,11 @@ export const ArtistProvider = ({ children }) => {
         }
     }
 
+    const getArtistById = async (id) => {
+        const { data } = await axios.get(`https://sound-zone-api-sp5.onrender.com/api/artists/${id}`);
+        return data;
+    };
+
     //Post
     const createArtist = async (artist) => {
         const {data} = await axios.post("https://sound-zone-api-sp5.onrender.com/api/artists/agregar", artist,
@@ -38,11 +43,14 @@ export const ArtistProvider = ({ children }) => {
     const updateArtist = async (id, updatedData) => {
         const enpoint = `https://sound-zone-api-sp5.onrender.com/api/artists/${id}/editar`;
         const {data} = await axios.put(enpoint, updatedData);
-        setArtists((prev)=>prev.map(artist => artist.id === id ? data : artist));
+        console.log("ID:", id);
+        console.log("Respuesta del servidor:", data);
+        setArtists((prev)=>prev.map(artist => String(artist.id) === String(id) ? data : artist));
+        return data;
     }
 
     return(
-        <ArtistContext.Provider value={{artists, loading, createArtist, updateArtist}}>
+        <ArtistContext.Provider value={{artists, loading, createArtist, updateArtist, getArtistById}}>
             { children }
         </ArtistContext.Provider>
     );

@@ -19,25 +19,27 @@ const ArtistEdit = () => {
   const [loading, setLoading] = useState(false);
 
     //hooks
-    const {artists, updateArtist} = useArtistContext();
+  const {artists, updateArtist, getArtistById} = useArtistContext();
 
-    const {id} = useParams();
+  const {id} = useParams();
     const navigate = useNavigate();
 
     useEffect(()=>{
-        if(!artists) return;    
-        const currentArtist = artists.find(artist => artist.id === id )
-        if(currentArtist){
-            setForm({
-                name: currentArtist.name || "",
-                country: currentArtist.country || "",
-                formedYear: currentArtist.formedYear || "",
-                isActive: currentArtist.isActive || "",
-                image: null,
-                biography: currentArtist.biography || "",
-            });
+        const load = async () => {
+        const data = await getArtistById(id);
+        if (data) {
+          setForm({
+            name: data.name || "",
+            country: data.country || "",
+            formedYear: data.formedYear || "",
+            isActive: String(data.isActive) || "true",
+            image: null,
+            biography: data.biography || "",
+          });
         }
-    }, [artists, id]);
+      };
+      load();
+    }, [id]);
 
     if(!artists) return <div>Cargando...</div>    
 
@@ -78,17 +80,17 @@ const ArtistEdit = () => {
       formData.append("country", form.country);
       formData.append("formedYear", form.formedYear);
       formData.append("biography", form.biography);
-      formData.append("isActive", form.isActive); // si lo agregas en el estado
+      formData.append("isActive", form.isActive); 
 
       if (form.image) {
-        formData.append("image", form.image); // archivo real
+        formData.append("image", form.image); 
       }
 
-      await updateArtist(formData);   
-      navigate("/items/artists");
+      const updatedArtist = await updateArtist(id, formData);   
+      navigate(`/items/artists/${updatedArtist.id}`);
     } catch (error) {
-      //console.error("Error al guardar el artista:", error);
-      if (error.response) {
+      console.error("Error al guardar el artista:", error);
+      /*if (error.response) {
         console.log("Data:", error.response.data);
         console.log("Status:", error.response.status);
         console.log("Headers:", error.response.headers);
@@ -96,10 +98,9 @@ const ArtistEdit = () => {
         console.log("No llegó respuesta:", error.request);
       } else {
         console.log("Error:", error.message);
-      }
+      } */
     } finally {
       setLoading(false);
-      navigate("/items/artists");
     }
   };
 
@@ -118,7 +119,7 @@ const ArtistEdit = () => {
             <i className="bi bi-apple-music text-red-500"></i>
           </div>
           <div>
-            <h2 className="text-white font-semibold text-lg leading-tight">Editar artista - </h2>
+            <h2 className="text-white font-semibold text-lg leading-tight">- Editar artista - </h2>
           </div>
         </div>
 
@@ -179,7 +180,7 @@ const ArtistEdit = () => {
 
           {/* Botones */}
           <div className="flex justify-end gap-2 pt-2 border-t-2 border-amber-100">
-            <button type="button" onClick={() => navigate("/items/artists") /**-1 */}
+            <button type="button" onClick={() => navigate(-1) /**-1 */}
               className="border-2 border-amber-300 text-amber-600 bg-white px-4 py-2 rounded-full text-sm font-medium
                 hover:bg-amber-50 transition-colors duration-200 cursor-pointer">Cancelar</button>
             <button type="submit" disabled={loading}
