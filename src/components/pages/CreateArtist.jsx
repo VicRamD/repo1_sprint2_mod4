@@ -24,9 +24,11 @@ const CreateArtist = () => {
   const validate = () => {
     const newErrors = {};
     if (!form.name.trim()) newErrors.name = "El nombre es obligatorio";
+    else if (form.name.trim().length < 3) newErrors.name = "El nombre debe tener al menos 3 caracteres";
     if (!form.country.trim()) newErrors.country = "El país es obligatorio";
+    else if (form.country.trim().length < 3) newErrors.country = "El país debe tener al menos 3 caracteres";
     if (!form.formedYear) newErrors.formedYear = "El año es obligatorio";
-    if (form.formedYear && (form.formedYear < 1800 || form.anio > new Date().getFullYear())) newErrors.formedYear = "Año inválido";
+    if (form.formedYear && (form.formedYear < 1800 || form.formedYear > new Date().getFullYear())) newErrors.formedYear = "Año inválido";
     return newErrors;
   };
 
