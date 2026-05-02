@@ -16,3 +16,5 @@ Para este proyecto he trabajado con una API de mi creación:
 `https://sound-zone-api-sp5.onrender.com`
 
 
+### Sitio desplegado
+`https://sound-zone-diplomatura.netlify.app/`
