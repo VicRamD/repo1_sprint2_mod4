@@ -50,7 +50,7 @@ export const ArtistProvider = ({ children }) => {
             setLoading(true);
             const {data} = await axios.post("https://sound-zone-api-sp5.onrender.com/api/artists/agregar", artist);
             setHasChange(true);
-        setArtists((prev)=>[...prev, data]);    
+            setArtists((prev)=>[...prev, data]);    
         } catch (err) {
             toast.error(`Error Status ${err.response.status} - ${err.message}`);
         } finally {

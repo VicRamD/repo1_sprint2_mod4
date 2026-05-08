@@ -35,6 +35,7 @@ const CreateArtist = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    //resetea el error
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 

@@ -11,13 +11,19 @@ import ArtistsList from './pages/ArtistsList';
 import ArtistDetail from './cards/ArtistDetail';
 import ArtistEdit from './pages/ArtistEdit';
 import NotFound from './pages/NotFound';
+import GenresList from './pages/GenresList';
+import CreateGenre from './pages/CreateGenre';
 
 const AppRouter = () => {
   return (
     <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/items" element={<Dashboard/>}>
-              <Route path="genres" element={<GenreBoard/>} />
+              {/*Sección de generos musicales*/}
+              <Route path="genres" element={<GenreBoard/>}>
+                  <Route index element={<GenresList/>}/>
+                  <Route path="create" element={<CreateGenre/>}/>
+              </Route>
               {/*Sección de artistas */}
               <Route path="artists" element={<ArtistBoard/>}>
                   <Route index element={<ArtistsList/>}></Route>
