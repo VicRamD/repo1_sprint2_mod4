@@ -33,8 +33,7 @@ export const GenreProvider = ({ children }) => {
     const createGenre = async (genre) => {
         try {
             setLoading(true);
-            //const {data} = await axios.post("https://sound-zone-api-sp5.onrender.com/api/genres/agregar", genre);
-            const {data} = await axios.post("http://localhost:3000/api/genres/agregar", genre);
+            const {data} = await axios.post("https://sound-zone-api-sp5.onrender.com/api/genres/agregar", genre);
             setHasChange(true);
             setGenres((prev)=>[...prev, data]);    
         } catch (err) {
