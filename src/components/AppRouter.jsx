@@ -15,6 +15,8 @@ import GenresList from './pages/GenresList';
 import CreateGenre from './pages/CreateGenre';
 import SongList from './pages/SongsList';
 import SongBoard from './cards/SongBoard';
+import AlbumBoard from './cards/AlbumBoard';
+import AlbumList from './pages/AlbumList';
 
 const AppRouter = () => {
   return (
@@ -41,6 +43,14 @@ const AppRouter = () => {
                   <Route path=':id' element={<ArtistDetail/>}/>
                   <Route path=':id/edit' element={<ArtistEdit/>}/> */}
               </Route> 
+              {/*Sección de albunes */}
+              <Route path="albums" element={<AlbumBoard/>}>
+                  <Route index element={<AlbumList/>}></Route>
+                  {/*
+                  <Route path='create' element={<CreateArtist/>}/>
+                  <Route path=':id' element={<ArtistDetail/>}/>
+                  <Route path=':id/edit' element={<ArtistEdit/>}/> */}
+              </Route>
           </Route>
           <Route path="/favorite" element={<Main/>}/>
           <Route path="/*" element={<NotFound/>}/>

@@ -15,7 +15,7 @@ const SongCard = ({song}) => {
                 {song.artists?.map(artist => <li>{artist.name}</li>)}
             </ul>
         </div>
-        <Link to={name.id} className='bg-blue-300 px-4 py-2 border inline-block hover:bg-blue-950 hover:text-white'>Ver más</Link>
+        <Link to={song.id} className='bg-blue-300 px-4 py-2 border inline-block hover:bg-blue-950 hover:text-white'>Ver más</Link>
     </div>
   )
 }
