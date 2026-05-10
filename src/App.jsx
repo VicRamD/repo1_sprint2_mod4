@@ -3,6 +3,7 @@ import Main from './components/layout/Main';
 import Footer from './components/layout/Footer'
 
 import AppRouter from './components/AppRouter';
+import { ContainerProvider } from './contexts/ContextContainer';
 import { ArtistProvider } from './contexts/ArtistContext';
 import { GenreProvider } from './contexts/GenreContext';
 
@@ -20,11 +21,9 @@ function App() {
         <Header/>
         {isModalOpen && <PlaylistModal/>}
         <ToastContainer/>
-        <ArtistProvider>
-          <GenreProvider>
-              <AppRouter/>
-          </GenreProvider>
-        </ArtistProvider>
+        <ContainerProvider>
+          <AppRouter/>
+        </ContainerProvider>
         <Footer/>
       </div>
       

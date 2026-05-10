@@ -13,6 +13,8 @@ import ArtistEdit from './pages/ArtistEdit';
 import NotFound from './pages/NotFound';
 import GenresList from './pages/GenresList';
 import CreateGenre from './pages/CreateGenre';
+import SongList from './pages/SongsList';
+import SongBoard from './cards/SongBoard';
 
 const AppRouter = () => {
   return (
@@ -31,6 +33,14 @@ const AppRouter = () => {
                   <Route path=':id' element={<ArtistDetail/>}/>
                   <Route path=':id/edit' element={<ArtistEdit/>}/>
               </Route>
+              {/*Sección de canciones */}
+              <Route path="songs" element={<SongBoard/>}>
+                  <Route index element={<SongList/>}></Route>
+                  {/*
+                  <Route path='create' element={<CreateArtist/>}/>
+                  <Route path=':id' element={<ArtistDetail/>}/>
+                  <Route path=':id/edit' element={<ArtistEdit/>}/> */}
+              </Route> 
           </Route>
           <Route path="/favorite" element={<Main/>}/>
           <Route path="/*" element={<NotFound/>}/>
